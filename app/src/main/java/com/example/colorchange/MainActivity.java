@@ -1,10 +1,12 @@
 package com.example.colorchange;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,68 +15,155 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView img, img2;
-    TextView txt;
-    private static int coolBlue = Color.parseColor("#2196F3");
-    private static int magenta = Color.parseColor("#E521F3");
-    private static int gold = Color.parseColor("#DAAA31");
-    private static int fireRed = Color.parseColor("#C30C0C");
+    ImageView img2;
+    TextView redView, greenView, blueView;
+    Button redButtonAdd, redButtonSub, greenButtonAdd, greenButtonSub, blueButtonAdd, blueButtonSub;
+    private int red, green, blue = 0;
 
+    @SuppressLint("SetTextI18n")
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        img = findViewById(R.id.imageView);
         img2 = findViewById(R.id.img2);
-        txt = findViewById(R.id.btnAnimate);
-        colorTest();
+        redView = findViewById(R.id.redView);
+        greenView = findViewById(R.id.greenView);
+        blueView = findViewById(R.id.blueView);
+        redButtonAdd = findViewById(R.id.redValueAdd);
+        greenButtonAdd = findViewById(R.id.greenValueAdd);
+        blueButtonAdd = findViewById(R.id.blueValueAdd);
+        redButtonSub = findViewById(R.id.redValueSub);
+        greenButtonSub = findViewById(R.id.greenValueSub);
+        blueButtonSub = findViewById(R.id.blueValueSub);
+        changeColor(red,green,blue);
+        redView.setText(String.valueOf(red));
+        greenView.setText(String.valueOf(green));
+        blueView.setText(String.valueOf(blue));
+        //hex2Rgb("#E521F3");
+        onPress();
+    }
 
-        txt.setOnClickListener(new View.OnClickListener() {
+    @SuppressLint("SetTextI18n")
+    public void hex2Rgb(String colorStr) {
+        red = Integer.valueOf( colorStr.substring( 1, 3 ), 16 );
+        green = Integer.valueOf( colorStr.substring( 3, 5 ), 16 );
+        blue = Integer.valueOf( colorStr.substring( 5, 7 ), 16 );
+        redView.setText(String.valueOf(red));
+        greenView.setText(String.valueOf(green));
+        blueView.setText(String.valueOf(blue));
+    }
+    
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void onPress(){
+        redButtonAdd.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                img.animate().rotationBy(90).setDuration(3000).start();
-                img2.animate().rotationBy(-90).setDuration(3000).start();
-                changeColor();
-                //img.setBackgroundColor(Color.parseColor("#C30C0C"));
-                //img2.setBackgroundColor(Color.parseColor("#C30C0C"));
-                //img.setBackgroundColor(R.color.magenta);
-                //img2.setBackgroundColor(R.color.gold);
-                //img.setBackgroundColor();
+                int redTest = red + 5;
+                if (red < 255 && redTest < 255){
+                    red+=5;
+                }
+                else{
+                    red = 255;
+                }
+                changeColor(red,green,blue);
+                redView.setText(String.valueOf(red));
+            }
+        });
+
+        redButtonSub.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View v) {
+                int redTest = red - 5;
+                if (red > 0 && redTest > 0){
+                    red-=5;
+                }
+                else{
+                    red = 0;
+                }
+                changeColor(red,green,blue);
+                redView.setText(String.valueOf(red));
+            }
+        });
+
+        greenButtonAdd.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View v) {
+                int greenTest = green + 5;
+                if (green < 255 && greenTest < 255){
+                    green+=5;
+                }
+                else{
+                    green = 255;
+                }
+                changeColor(red,green,blue);
+                greenView.setText(String.valueOf(green));
+            }
+        });
+
+        greenButtonSub.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View v) {
+                int greenTest = green - 5;
+                if (green > 0 && greenTest > 0){
+                    green-=5;
+                }
+                else{
+                    green = 0;
+                }
+                changeColor(red,green,blue);
+                greenView.setText(String.valueOf(green));
+            }
+        });
+
+        blueButtonAdd.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View v) {
+                int blueTest = blue + 5;
+                if (blue < 255 && blueTest < 255){
+                    blue+=5;
+                }
+                else{
+                    blue = 255;
+                }
+                changeColor(red,green,blue);
+                blueView.setText(String.valueOf(blue));
+            }
+        });
+
+        blueButtonSub.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View v) {
+                int blueTest = blue - 5;
+                if (blue > 0 && blueTest > 0){
+                    blue-=5;
+                }
+                else{
+                    blue = 0;
+                }
+                changeColor(red,green,blue);
+                blueView.setText(String.valueOf(blue));
             }
         });
     }
 
-    private void changeColor(){
-        ColorDrawable currentBackground = (ColorDrawable) img.getBackground();
-        int currentBackgroundColor = currentBackground.getColor();
-        if (currentBackgroundColor == coolBlue){
-            img.setBackgroundColor(magenta);
-            img2.setBackgroundColor(magenta);
-        }
-        else if (currentBackgroundColor == magenta){
-            img.setBackgroundColor(gold);
-            img2.setBackgroundColor(gold);
-        }
-        else if (currentBackgroundColor == gold){
-            img.setBackgroundColor(fireRed);
-            img2.setBackgroundColor(fireRed);
-        }
-        else{
-            img.setBackgroundColor(coolBlue);
-            img2.setBackgroundColor(coolBlue);
-        }
-    }
-
-    private boolean colorTest(){
-        int blueTest = Color.parseColor("#2196F3");
-        ColorDrawable bTest = (ColorDrawable) img.getBackground();
-        int initialBlueTest = bTest.getColor();
-        if (blueTest == initialBlueTest){
-            System.out.println("true");
-            return true;
-        }
-        System.out.println("false");
-        return false;
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @SuppressLint("SetTextI18n")
+    private void changeColor(int red, int green, int blue){
+        int newColor = Color.rgb(red,green,blue);
+        img2.setBackgroundColor(newColor);
     }
 }

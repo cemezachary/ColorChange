@@ -6,38 +6,110 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/btnAnimate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="Animate!"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="159dp"
-        android:layout_height="161dp"
-        android:layout_marginTop="172dp"
-        android:background="#2196F3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_dialog_alert" />
-
     <ImageView
         android:id="@+id/img2"
-        android:layout_width="190dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="68dp"
-        android:background="#28f"
+        android:layout_width="420dp"
+        android:layout_height="612dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAnimate" />
+        app:layout_constraintTop_toBottomOf="@+id/greenView" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/redValueAdd"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="+ r"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/redValueSub"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="- r"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/greenValueAdd"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="+ g"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/greenValueSub"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="- g"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/blueValueAdd"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="+ b"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/blueValueSub"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="- b"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/redView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/greenView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/greenView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/blueView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="64dp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.971"
+        app:layout_constraintStart_toEndOf="@+id/greenView"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
