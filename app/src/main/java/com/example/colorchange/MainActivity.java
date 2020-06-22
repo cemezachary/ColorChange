@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +14,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView img2;
+    ImageView changingBackground;
     TextView redView, greenView, blueView;
     Button redButtonAdd, redButtonSub, greenButtonAdd, greenButtonSub, blueButtonAdd, blueButtonSub;
     private int red, green, blue = 0;
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        img2 = findViewById(R.id.img2);
+        changingBackground = findViewById(R.id.changingBackground);
         redView = findViewById(R.id.redView);
         greenView = findViewById(R.id.greenView);
         blueView = findViewById(R.id.blueView);
@@ -164,6 +163,6 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void changeColor(int red, int green, int blue){
         int newColor = Color.rgb(red,green,blue);
-        img2.setBackgroundColor(newColor);
+        changingBackground.setBackgroundColor(newColor);
     }
 }
